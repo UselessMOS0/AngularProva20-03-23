@@ -1,15 +1,18 @@
-<div>
-    <input type="text" #queryC>
-    <button (click)="submit(queryC)">Search</button>
+<div class="input-group" style="margin-bottom: 10px;">
+  <input #queryC type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <button type="button" (click)="submit(queryC)" class="btn btn-outline-primary">search</button>
 </div>
 
 <div *ngIf="cocktails">
-      <div class="row">
+    <div *ngIf="cocktails.drinks == null">
+        nessun cocktail trovato
+    </div>
+      <div class="row" >
         <div class="col-sm-6 col-md-4" *ngFor="let c of cocktails.drinks">
           <div class="thumbnail">
   
             <div class="content">
-              <img src="{{ c.strDrinkThumb }}" class="img-responsive" alt="{{c.strImageAttribution}}">
+              <img src="{{ c.strDrinkThumb }}" class="img-responsive" alt="{{c.strImageAttribution}}" style="width: 50%;height: 50%;">
               <div class="caption">
                 <h3>
                   <a [routerLink]="['/cocktail', c.idDrink]">

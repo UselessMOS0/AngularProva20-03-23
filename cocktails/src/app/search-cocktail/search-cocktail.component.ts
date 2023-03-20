@@ -12,7 +12,7 @@ export class SearchCocktailComponent {
   constructor(private service : CocktailService){}
 
   ngOnInit(): void{
-    this.service.allCocktails().subscribe((data)=>console.log(data))
+    this.service.allCocktails().subscribe((data)=> this.cocktails = data)
   }
   submit(query: HTMLInputElement): void {
 
