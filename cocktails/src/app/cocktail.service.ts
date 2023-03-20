@@ -13,4 +13,9 @@ export class CocktailService {
     let obsC = this.http.get(url);
     return obsC;
   }
+  searchC(query:string) {
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`;
+    let obs = this.http.get(url);
+    return obs;
+  }
 }

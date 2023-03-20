@@ -7,9 +7,20 @@ import { CocktailService } from '../cocktail.service';
   styleUrls: ['./search-cocktail.component.css']
 })
 export class SearchCocktailComponent {
+  cocktails:any;
+  query!:string;
   constructor(private service : CocktailService){}
 
   ngOnInit(): void{
     this.service.allCocktails().subscribe((data)=>console.log(data))
+  }
+  submit(query: HTMLInputElement): void {
+
+    if (!query.value) {
+      this.service.allCocktails().subscribe((data)=>this.cocktails = data)
+      return;
+    }
+    this.query = query.value;
+    this.service.searchC(this.query).subscribe((data) => this.cocktails = data);
   }
 }
