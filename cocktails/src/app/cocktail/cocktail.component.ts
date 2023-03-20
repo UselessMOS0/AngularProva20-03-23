@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CocktailService } from '../cocktail.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cocktail',
@@ -13,6 +14,7 @@ export class CocktailComponent {
   constructor(
     private service: CocktailService,
     private route: ActivatedRoute,
+    private location: Location
     ){}
 
     ngOnInit(): void {
@@ -24,6 +26,10 @@ export class CocktailComponent {
       if(cocktailId){
         this.service.searchId(cocktailId).subscribe((data) => {this.cocktail=data; console.log(data)})
       }
+    }
+
+    back(){
+      this.location.back()
     }
 
 }
