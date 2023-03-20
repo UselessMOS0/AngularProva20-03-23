@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CocktailService } from '../cocktail.service';
 
 @Component({
   selector: 'app-search-cocktail',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-cocktail.component.css']
 })
 export class SearchCocktailComponent {
+  constructor(private service : CocktailService){}
 
+  ngOnInit(): void{
+    this.service.allCocktails().subscribe((data)=>console.log(data))
+  }
 }
